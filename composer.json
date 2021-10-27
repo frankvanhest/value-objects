@@ -1,0 +1,32 @@
+{
+    "name": "frankvanhest/value-objects",
+    "description": "Value Objects interfaces, traits, abstracts and testing helpers to create value objects",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Frank van Hest",
+            "email": "frank@frankvanhest.nl"
+        }
+    ],
+    "require": {
+        "php": "^8.0",
+        "roave/dont": "^1.3.0"
+    },
+    "require-dev": {
+        "infection/infection": "^0.25.3",
+        "phpstan/phpstan": "^0.12.99",
+        "phpunit/phpunit": "^9.5.10",
+        "roave/security-advisories": "dev-latest"
+    },
+    "autoload": {
+        "psr-4": {
+            "FrankVanHest\\ValueObjects\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "FrankVanHest\\ValueObjects\\Tests\\": "tests/"
+        }
+    }
+}
