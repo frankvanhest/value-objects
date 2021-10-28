@@ -2,10 +2,10 @@
 
 namespace FrankVanHest\ValueObjects\Tests\Dummies;
 
-use FrankVanHest\ValueObjects\Abstracts\IntegerValueObject as AbstractIntegerValueObject;
+use FrankVanHest\ValueObjects\Abstracts\IntegerValueObject;
 use InvalidArgumentException;
 
-final class IntegerGreaterThanZero extends AbstractIntegerValueObject
+final class IntegerGreaterThanZero extends IntegerValueObject
 {
     protected static function assert(int $integer): void
     {

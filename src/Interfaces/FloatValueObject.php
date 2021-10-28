@@ -6,7 +6,7 @@ namespace FrankVanHest\ValueObjects\Interfaces;
 
 interface FloatValueObject extends ValueObject
 {
-    public function toFloat(): int;
+    public function toFloat(): float;
 
-    public static function fromFloat(int $value): static;
+    public static function fromFloat(float $value): static;
 }
