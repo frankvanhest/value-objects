@@ -1,0 +1,61 @@
+name: Tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    continue-on-error: ${{ matrix.experimental }}
+    strategy:
+      fail-fast: true
+      matrix:
+        php: [8.0]
+        composer-flags: [ '' ]
+        stability: ['prefer-lowest', 'prefer-stable']
+        experimental: [false]
+        include:
+          - php: 8.1
+            stability: 'prefer-stable'
+            composer-flags: '--ignore-platform-reqs'
+            experimental: true
+
+    name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: ${{ matrix.php }}
+          coverage: xdebug
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+          echo "::set-output name=dir::$(composer config cache-files-dir)"
+      - uses: actions/cache@v2
+        with:
+          path: ${{ steps.composer-cache.outputs.dir }}
+          key: ${{ runner.os }}-composer-${{ matrix.stability }}-${{ hashFiles('**/composer.lock') }}
+          restore-keys: |
+            ${{ runner.os }}-composer-${{ matrix.stability }}-
+            ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: composer update --${{ matrix.stability }} ${{ matrix.composer-flags }} --prefer-dist --no-interaction --no-progress
+
+      - name: PHPStan
+        if: ${{ matrix.experimental == false }}
+        run: vendor/bin/phpstan analyze -c phpstan.neon.dist
+
+      - name: PHPUnit
+        run: vendor/bin/phpunit --verbose --coverage-text --coverage-clover=coverage.clover
+
+      - name: Infection
+        if: ${{ matrix.experimental == false }}
+        run: vendor/bin/infection --min-msi=100 --min-covered-msi=100 --show-mutations --only-covered --threads=4 --test-framework-options="--configuration=phpunit.xml.dist" --configuration=infection.json.dist
+
