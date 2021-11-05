@@ -10,7 +10,7 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
 {
     use JustDont;
 
-    private int $value;
+    protected int $value;
 
     final private function __construct()
     {

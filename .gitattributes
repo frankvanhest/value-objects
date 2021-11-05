@@ -1,0 +1,11 @@
+* text=auto
+
+/.github export-ignore
+/.gitattributes export-ignore
+/.gitignore export-ignore
+/phpstan.neon.dist export-ignore
+/infection.json.dist export-ignore
+/phpunit.xml.dist export-ignore
+/src/CodeGeneration/ export-ignore
+/src/UuidMessageDecorator/ export-ignore
+/tests/** export-ignore

@@ -1,0 +1,9 @@
+{
+    "sub-splits": [
+        {
+            "name": "value-objects-email",
+            "directory": "src/Email",
+            "target": "git@github.com:frankvanhest/value-objects-email.git"
+        }
+    ]
+}

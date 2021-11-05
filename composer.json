@@ -1,7 +1,7 @@
 {
     "name": "frankvanhest/value-objects",
-    "description": "Value Objects interfaces, traits, abstracts and testing helpers to create value objects",
-    "minimum-stability": "stable",
+    "description": "Value Objects interfaces and abstracts to create value objects",
+    "type": "library",
     "license": "MIT",
     "authors": [
         {

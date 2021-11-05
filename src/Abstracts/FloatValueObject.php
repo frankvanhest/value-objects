@@ -10,7 +10,7 @@ abstract class FloatValueObject implements FloatValueObjectInterface
 {
     use JustDont;
 
-    private float $value;
+    protected float $value;
 
     final private function __construct()
     {
