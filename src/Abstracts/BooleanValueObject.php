@@ -10,9 +10,7 @@ abstract class BooleanValueObject implements BooleanValueObjectInterface
 {
     use JustDont;
 
-    protected bool $value;
-
-    final private function __construct()
+    final protected function __construct(private bool $value)
     {
     }
 
@@ -28,9 +26,6 @@ abstract class BooleanValueObject implements BooleanValueObjectInterface
 
     final public static function fromBoolean(bool $value): static
     {
-        $instance = new static();
-        $instance->value = $value;
-
-        return $instance;
+        return new static($value);
     }
 }

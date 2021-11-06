@@ -1,2 +1,2 @@
-# value-objects
-Value Objects interfaces, traits, abstracts and testing helpers to create value objects
+# Value Objects
+Value Objects interfaces and abstracts  to create value objects

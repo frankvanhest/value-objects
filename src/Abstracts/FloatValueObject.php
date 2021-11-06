@@ -10,10 +10,10 @@ abstract class FloatValueObject implements FloatValueObjectInterface
 {
     use JustDont;
 
-    protected float $value;
-
-    final private function __construct()
+    final protected function __construct(private float $value)
     {
+        $value = $this->modifyValue($value);
+        $this->assert($value);
     }
 
     final public function equals(?ValueObject $valueObject): bool
@@ -26,17 +26,21 @@ abstract class FloatValueObject implements FloatValueObjectInterface
         return $this->value;
     }
 
+    /**
+     * Override this method to modify the value before being used for assertion and create an instance
+     */
+    protected function modifyValue(float $value): float
+    {
+        return $value;
+    }
+
     final public static function fromFloat(float $value): static
     {
-        static::assert($value);
-        $instance = new static();
-        $instance->value = $value;
-
-        return $instance;
+        return new static($value);
     }
 
     /**
      * @throws \Throwable When the float value does not match the requirements
      */
-    abstract protected static function assert(float $float): void;
+    abstract protected function assert(float $float): void;
 }

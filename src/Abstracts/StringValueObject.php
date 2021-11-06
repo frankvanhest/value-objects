@@ -10,10 +10,10 @@ abstract class StringValueObject implements StringValueObjectInterface
 {
     use JustDont;
 
-    protected string $value;
-
-    final private function __construct()
+    final protected function __construct(private string $value)
     {
+        $value = $this->modifyValue($value);
+        $this->assert($value);
     }
 
     final public function equals(?ValueObject $valueObject): bool
@@ -26,17 +26,21 @@ abstract class StringValueObject implements StringValueObjectInterface
         return $this->value;
     }
 
+    /**
+     * Override this method to modify the value before being used for assertion and create an instance
+     */
+    protected function modifyValue(string $value): string
+    {
+        return $value;
+    }
+
     final public static function fromString(string $value): static
     {
-        static::assert($value);
-        $instance = new static();
-        $instance->value = $value;
-
-        return $instance;
+        return new static($value);
     }
 
     /**
      * @throws \Throwable When the string value does not match the requirements
      */
-    abstract protected static function assert(string $string): void;
+    abstract protected function assert(string $string): void;
 }

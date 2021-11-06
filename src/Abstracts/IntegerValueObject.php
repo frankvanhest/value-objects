@@ -10,10 +10,10 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
 {
     use JustDont;
 
-    protected int $value;
-
-    final private function __construct()
+    final private function __construct(private int $value)
     {
+        $value = $this->modifyValue($value);
+        $this->assert($value);
     }
 
     final public function equals(?ValueObject $valueObject): bool
@@ -28,15 +28,19 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
 
     final public static function fromInteger(int $value): static
     {
-        static::assert($value);
-        $instance = new static();
-        $instance->value = $value;
+        return new static($value);
+    }
 
-        return $instance;
+    /**
+     * Override this method to modify the value before being used for assertion and create an instance
+     */
+    protected static function modifyValue(int $value): int
+    {
+        return $value;
     }
 
     /**
      * @throws \Throwable When the integer value does not match the requirements
      */
-    abstract protected static function assert(int $integer): void;
+    abstract protected function assert(int $integer): void;
 }
