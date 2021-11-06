@@ -7,7 +7,7 @@ use InvalidArgumentException;
 
 final class IntegerGreaterThanZero extends IntegerValueObject
 {
-    protected static function assert(int $integer): void
+    protected function assert(int $integer): void
     {
         if ($integer > 0) {
             return;

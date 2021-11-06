@@ -7,7 +7,7 @@ use InvalidArgumentException;
 
 final class FloatGreaterThanZeroPointOne extends FloatValueObject
 {
-    protected static function assert(float $float): void
+    protected function assert(float $float): void
     {
         if ($float > 0.1) {
             return;
