@@ -12,8 +12,8 @@ abstract class StringValueObject implements StringValueObjectInterface
 
     final protected function __construct(private string $value)
     {
-        $value = $this->modifyValue($value);
-        $this->assert($value);
+        $this->value = $this->modifyValue($this->value);
+        $this->assert($this->value);
     }
 
     final public function equals(?ValueObject $valueObject): bool
@@ -27,7 +27,7 @@ abstract class StringValueObject implements StringValueObjectInterface
     }
 
     /**
-     * Override this method to modify the value before being used for assertion and create an instance
+     * Override this method to modify the value while constructing the class and before asserting the value
      */
     protected function modifyValue(string $value): string
     {

@@ -7,12 +7,17 @@ use InvalidArgumentException;
 
 final class FloatGreaterThanZeroPointOne extends FloatValueObject
 {
-    protected function assert(float $float): void
+    protected function assert(float $value): void
     {
-        if ($float > 0.1) {
+        if ($value > 0.1) {
             return;
         }
 
         throw new InvalidArgumentException('Value should be greater than zero point one');
+    }
+
+    protected function modifyValue(float $value): float
+    {
+        return $value <= 0.1 ? $value : $value + 10;
     }
 }

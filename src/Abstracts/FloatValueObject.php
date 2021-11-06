@@ -12,8 +12,8 @@ abstract class FloatValueObject implements FloatValueObjectInterface
 
     final protected function __construct(private float $value)
     {
-        $value = $this->modifyValue($value);
-        $this->assert($value);
+        $this->value = $this->modifyValue($this->value);
+        $this->assert($this->value);
     }
 
     final public function equals(?ValueObject $valueObject): bool
@@ -27,7 +27,7 @@ abstract class FloatValueObject implements FloatValueObjectInterface
     }
 
     /**
-     * Override this method to modify the value before being used for assertion and create an instance
+     * Override this method to modify the value while constructing the class and before asserting the value
      */
     protected function modifyValue(float $value): float
     {
@@ -42,5 +42,5 @@ abstract class FloatValueObject implements FloatValueObjectInterface
     /**
      * @throws \Throwable When the float value does not match the requirements
      */
-    abstract protected function assert(float $float): void;
+    abstract protected function assert(float $value): void;
 }

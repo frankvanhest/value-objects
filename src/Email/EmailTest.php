@@ -1,9 +1,8 @@
 <?php
 
-namespace FrankVanHest\ValueObjects\Tests\Email;
+namespace FrankVanHest\ValueObjects\Email;
 
 use Assert\AssertionFailedException;
-use FrankVanHest\ValueObjects\Email\Email;
 use PHPUnit\Framework\TestCase;
 
 final class EmailTest extends TestCase
@@ -36,6 +35,12 @@ final class EmailTest extends TestCase
         ];
     }
 
+    public function testDomainName(): void
+    {
+        $email = Email::fromString('user@domain.com');
+        self::assertSame('domain.com', $email->domainName());
+    }
+
     /**
      * @dataProvider correctValues
      */
@@ -51,5 +56,11 @@ final class EmailTest extends TestCase
     {
         $this->expectException(AssertionFailedException::class);
         Email::fromString($value);
+    }
+
+    public function testLocalPart(): void
+    {
+        $email = Email::fromString('user@domain.com');
+        self::assertSame('user', $email->localPart());
     }
 }

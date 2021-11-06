@@ -15,4 +15,9 @@ final class NotEmptyString extends StringValueObject
 
         throw new InvalidArgumentException('Empty value is not allowed');
     }
+
+    protected function modifyValue(string $value): string
+    {
+        return empty($value) ? $value : $value . 'Modified';
+    }
 }

@@ -7,12 +7,17 @@ use InvalidArgumentException;
 
 final class IntegerGreaterThanZero extends IntegerValueObject
 {
-    protected function assert(int $integer): void
+    protected function assert(int $value): void
     {
-        if ($integer > 0) {
+        if ($value > 0) {
             return;
         }
 
         throw new InvalidArgumentException('Value should be greater than zero');
+    }
+
+    protected function modifyValue(int $value): int
+    {
+        return $value <= 0 ? $value : $value + 10;
     }
 }

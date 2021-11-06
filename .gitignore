@@ -4,5 +4,4 @@
 composer.lock
 infection.json
 infection.log
-phpstan.neon
 phpunit.xml

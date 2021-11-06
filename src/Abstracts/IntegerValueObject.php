@@ -12,8 +12,8 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
 
     final private function __construct(private int $value)
     {
-        $value = $this->modifyValue($value);
-        $this->assert($value);
+        $this->value = $this->modifyValue($this->value);
+        $this->assert($this->value);
     }
 
     final public function equals(?ValueObject $valueObject): bool
@@ -32,9 +32,9 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
     }
 
     /**
-     * Override this method to modify the value before being used for assertion and create an instance
+     * Override this method to modify the value while constructing the class and before asserting the value
      */
-    protected static function modifyValue(int $value): int
+    protected function modifyValue(int $value): int
     {
         return $value;
     }
@@ -42,5 +42,5 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
     /**
      * @throws \Throwable When the integer value does not match the requirements
      */
-    abstract protected function assert(int $integer): void;
+    abstract protected function assert(int $value): void;
 }
