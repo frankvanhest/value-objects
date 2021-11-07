@@ -7,12 +7,12 @@ use FrankVanHest\ValueObjects\Abstracts\StringValueObject;
 
 class Email extends StringValueObject
 {
-    public function localPart(): string
+    final public function localPart(): string
     {
         return explode('@', $this->toString())[0];
     }
 
-    public function domainName(): string
+    final public function domainName(): string
     {
         return explode('@', $this->toString())[1];
     }

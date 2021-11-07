@@ -6,7 +6,9 @@ PHP.
 * [Installation](#installation)
 * [What is a Value Object](#what-is-a-value-object)
 * [Using this package](#using-this-package)
+* [Predefined common Value Objects](#predefined-common-value-objects)
 * [Contribution](#contribution)
+* [License](#license)
 
 ## Installation
 
@@ -120,4 +122,4 @@ There are some requirements:
 
 ## License
 
-See [LICENCE](LICENSE)
+See [LICENCE](LICENSE.md)
