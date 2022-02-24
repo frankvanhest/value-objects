@@ -17,9 +17,9 @@ class Email extends StringValueObject
         return explode('@', $this->toString())[1];
     }
 
-    protected function assert(string $string): void
+    protected function assert(string $value): void
     {
-        Assertion::email($string);
+        Assertion::email($value);
     }
 
     protected function modifyValue(string $value): string

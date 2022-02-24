@@ -7,9 +7,9 @@ use InvalidArgumentException;
 
 final class NotEmptyString extends StringValueObject
 {
-    protected function assert(string $string): void
+    protected function assert(string $value): void
     {
-        if (!empty($string)) {
+        if (!empty($value)) {
             return;
         }
 
