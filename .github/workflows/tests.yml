@@ -13,13 +13,8 @@ jobs:
       matrix:
         php: [8.1]
         composer-flags: [ '' ]
-        stability: ['prefer-lowest', 'prefer-stable']
+        stability: ['prefer-stable']
         experimental: [false]
-        include:
-          - php: 8.1
-            stability: 'prefer-stable'
-            composer-flags: '--ignore-platform-reqs'
-            experimental: true
 
     name: PHP ${{ matrix.php }} - ${{ matrix.stability }}
 
