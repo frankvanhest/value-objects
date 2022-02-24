@@ -44,5 +44,5 @@ abstract class StringValueObject implements StringValueObjectInterface
     /**
      * @throws \Throwable When the string value does not match the requirements
      */
-    abstract protected function assert(string $string): void;
+    abstract protected function assert(string $value): void;
 }
