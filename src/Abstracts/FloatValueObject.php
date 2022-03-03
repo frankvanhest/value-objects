@@ -27,7 +27,7 @@ abstract class FloatValueObject implements FloatValueObjectInterface
     }
 
     /**
-     * Override this method to modify the value while constructing the class and before asserting the value
+     * Override this method to alter the value before constructing the instance
      */
     protected function alterValueBeforeConstructing(float $value): float
     {
