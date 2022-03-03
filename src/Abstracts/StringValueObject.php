@@ -14,7 +14,7 @@ abstract class StringValueObject implements StringValueObjectInterface
 
     final protected function __construct(string $value)
     {
-        $this->value = $this->modifyValue($value);
+        $this->value = $this->alterValueBeforeConstructing($value);
         $this->assert($this->value);
     }
 
@@ -29,9 +29,9 @@ abstract class StringValueObject implements StringValueObjectInterface
     }
 
     /**
-     * Override this method to modify the value while constructing the class and before asserting the value
+     * Override this method to alter the value before constructing the instance
      */
-    protected function modifyValue(string $value): string
+    protected function alterValueBeforeConstructing(string $value): string
     {
         return $value;
     }
