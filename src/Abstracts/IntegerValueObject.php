@@ -12,7 +12,7 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
 
     final private function __construct(private int $value)
     {
-        $this->value = $this->modifyValue($this->value);
+        $this->value = $this->alterValueBeforeConstructing($this->value);
         $this->assert($this->value);
     }
 
@@ -32,9 +32,9 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
     }
 
     /**
-     * Override this method to modify the value while constructing the class and before asserting the value
+     * Override this method to alter the value before constructing the instance
      */
-    protected function modifyValue(int $value): int
+    protected function alterValueBeforeConstructing(int $value): int
     {
         return $value;
     }
