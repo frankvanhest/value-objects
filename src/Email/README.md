@@ -27,7 +27,7 @@ final class InvoiceEmail extends Email
 }
 ```
 
-You can override the methods `assert` and `modifyValue` if they don't meet your requirements. The assertion for a valid
+You can override the methods `assert` and `alterValueBeforeConstructing` if they don't meet your requirements. The assertion for a valid
 e-mail address is based on PHP `filter_var` flag `FILTER_VALIDATE_EMAIL` which only
 supports [RFC822](#http://www.faqs.org/rfcs/rfc822.html).
 

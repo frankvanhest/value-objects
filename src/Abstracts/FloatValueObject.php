@@ -12,7 +12,7 @@ abstract class FloatValueObject implements FloatValueObjectInterface
 
     final protected function __construct(private float $value)
     {
-        $this->value = $this->modifyValue($this->value);
+        $this->value = $this->alterValueBeforeConstructing($this->value);
         $this->assert($this->value);
     }
 
@@ -29,7 +29,7 @@ abstract class FloatValueObject implements FloatValueObjectInterface
     /**
      * Override this method to modify the value while constructing the class and before asserting the value
      */
-    protected function modifyValue(float $value): float
+    protected function alterValueBeforeConstructing(float $value): float
     {
         return $value;
     }

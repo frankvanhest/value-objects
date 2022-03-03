@@ -22,7 +22,7 @@ class Email extends StringValueObject
         Assertion::email($string);
     }
 
-    protected function modifyValue(string $value): string
+    protected function alterValueBeforeConstructing(string $value): string
     {
         return strtolower($value);
     }
