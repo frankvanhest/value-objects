@@ -16,7 +16,7 @@ final class IntegerGreaterThanZero extends IntegerValueObject
         throw new InvalidArgumentException('Value should be greater than zero');
     }
 
-    protected function modifyValue(int $value): int
+    protected function alterValueBeforeConstructing(int $value): int
     {
         return $value <= 0 ? $value : $value + 10;
     }
