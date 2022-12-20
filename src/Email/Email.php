@@ -5,7 +5,7 @@ namespace FrankVanHest\ValueObjects\Email;
 use Assert\Assertion;
 use FrankVanHest\ValueObjects\Abstracts\StringValueObject;
 
-class Email extends StringValueObject
+readonly class Email extends StringValueObject
 {
     final public function localPart(): string
     {

@@ -6,11 +6,11 @@ use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\IntegerValueObject as IntegerValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
-abstract class IntegerValueObject implements IntegerValueObjectInterface
+abstract readonly class IntegerValueObject implements IntegerValueObjectInterface
 {
     use JustDont;
 
-    private readonly int $value;
+    private int $value;
 
     final private function __construct(int $value)
     {

@@ -6,11 +6,11 @@ use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\StringValueObject as StringValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
-abstract class StringValueObject implements StringValueObjectInterface
+abstract readonly class StringValueObject implements StringValueObjectInterface
 {
     use JustDont;
 
-    private readonly string $value;
+    private string $value;
 
     final protected function __construct(string $value)
     {

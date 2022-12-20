@@ -5,7 +5,7 @@ namespace FrankVanHest\ValueObjects\Tests\Dummies;
 use FrankVanHest\ValueObjects\Abstracts\FloatValueObject;
 use InvalidArgumentException;
 
-final class FloatGreaterThanZeroPointOne extends FloatValueObject
+final readonly class FloatGreaterThanZeroPointOne extends FloatValueObject
 {
     protected function assert(float $value): void
     {
