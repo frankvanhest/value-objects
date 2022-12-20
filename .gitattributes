@@ -7,4 +7,3 @@
 /infection.json.dist export-ignore
 /phpunit.xml.dist export-ignore
 /tests/** export-ignore
-/src/Email/** export-ignore
