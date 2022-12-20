@@ -104,11 +104,8 @@ $moneyA->equals(null); // Returns false
 
 ## Predefined common Value Objects
 
-There are some Value Objects which will be used in different projects. To make it easier not having to write the same
-thing over and over again I'm providing several common Value Objects packages. For now the following are already
-available:
-
-- [E-mail](https://github.com/frankvanhest/value-objects-email)
+In the future multiple predefined Value Objects will become available, to make it easier not having to write the same
+thing over and over again I'm providing several common Value Objects packages.
 
 ## Contribution
 
