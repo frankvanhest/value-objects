@@ -15,9 +15,4 @@ final readonly class FloatGreaterThanZeroPointOne extends FloatValueObject
 
         throw new InvalidArgumentException('Value should be greater than zero point one');
     }
-
-    protected function alterValueBeforeConstructing(float $value): float
-    {
-        return $value <= 0.1 ? $value : $value + 10;
-    }
 }

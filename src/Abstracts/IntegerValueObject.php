@@ -10,11 +10,8 @@ abstract readonly class IntegerValueObject implements IntegerValueObjectInterfac
 {
     use JustDont;
 
-    private int $value;
-
-    final private function __construct(int $value)
+    final private function __construct(private int $value)
     {
-        $this->value = $this->alterValueBeforeConstructing($value);
         $this->assert($this->value);
     }
 
@@ -31,14 +28,6 @@ abstract readonly class IntegerValueObject implements IntegerValueObjectInterfac
     final public static function fromInteger(int $value): static
     {
         return new static($value);
-    }
-
-    /**
-     * Override this method to alter the value before constructing the instance
-     */
-    protected function alterValueBeforeConstructing(int $value): int
-    {
-        return $value;
     }
 
     /**

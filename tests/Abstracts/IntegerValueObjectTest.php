@@ -39,7 +39,7 @@ final class IntegerValueObjectTest extends TestCase
     public function testFromInteger(): void
     {
         $value = 1;
-        $expectedValue = 11;
+        $expectedValue = 1;
         self::assertSame($expectedValue, IntegerGreaterThanZero::fromInteger($value)->toInteger());
     }
 

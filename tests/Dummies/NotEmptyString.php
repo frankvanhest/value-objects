@@ -15,9 +15,4 @@ final readonly class NotEmptyString extends StringValueObject
 
         throw new InvalidArgumentException('Empty value is not allowed');
     }
-
-    protected function alterValueBeforeConstructing(string $value): string
-    {
-        return empty($value) ? $value : $value . 'Modified';
-    }
 }

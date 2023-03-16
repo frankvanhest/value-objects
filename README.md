@@ -24,6 +24,7 @@ make sure that the value is asserted accordingly to that domain knowledge. The c
 - it is immutable
 - it wraps primitive data
 - it represents domain specific knowledge
+- it has a name which give it a meaningful purpose
 - it is equals to another instance when the value is the same, but the instance itself is not
 
 Whenever an instance of a Value Object is passed around your application, you can be sure that the value inside is what
