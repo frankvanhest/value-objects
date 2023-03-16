@@ -6,7 +6,6 @@ PHP.
 * [Installation](#installation)
 * [What is a Value Object](#what-is-a-value-object)
 * [Using this package](#using-this-package)
-* [Predefined common Value Objects](#predefined-common-value-objects)
 * [Contribution](#contribution)
 * [License](#license)
 
@@ -102,11 +101,6 @@ $moneyA->equals($moneyB); // Returns true
 $moneyA->equals($moneyC); // Returns false
 $moneyA->equals(null); // Returns false
 ```
-
-## Predefined common Value Objects
-
-In the future multiple predefined Value Objects will become available, to make it easier not having to write the same
-thing over and over again I'm providing several common Value Objects packages.
 
 ## Contribution
 
