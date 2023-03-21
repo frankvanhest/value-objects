@@ -5,7 +5,7 @@ namespace FrankVanHest\ValueObjects\Tests\Dummies;
 use FrankVanHest\ValueObjects\Abstracts\IntegerValueObject;
 use InvalidArgumentException;
 
-final class IntegerGreaterThanZero extends IntegerValueObject
+final readonly class IntegerGreaterThanZero extends IntegerValueObject
 {
     protected function assert(int $value): void
     {
@@ -14,10 +14,5 @@ final class IntegerGreaterThanZero extends IntegerValueObject
         }
 
         throw new InvalidArgumentException('Value should be greater than zero');
-    }
-
-    protected function alterValueBeforeConstructing(int $value): int
-    {
-        return $value <= 0 ? $value : $value + 10;
     }
 }

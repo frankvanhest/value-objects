@@ -43,7 +43,7 @@ final class FloatValueObjectTest extends TestCase
     public function testFromFloat(): void
     {
         $value = 0.2;
-        $expectedValue = 10.2;
+        $expectedValue = 0.2;
         self::assertSame($expectedValue, FloatGreaterThanZeroPointOne::fromFloat($value)->toFloat());
     }
 

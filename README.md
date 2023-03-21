@@ -6,7 +6,6 @@ PHP.
 * [Installation](#installation)
 * [What is a Value Object](#what-is-a-value-object)
 * [Using this package](#using-this-package)
-* [Predefined common Value Objects](#predefined-common-value-objects)
 * [Contribution](#contribution)
 * [License](#license)
 
@@ -24,6 +23,7 @@ make sure that the value is asserted accordingly to that domain knowledge. The c
 - it is immutable
 - it wraps primitive data
 - it represents domain specific knowledge
+- it has a name which give it a meaningful purpose
 - it is equals to another instance when the value is the same, but the instance itself is not
 
 Whenever an instance of a Value Object is passed around your application, you can be sure that the value inside is what
@@ -32,7 +32,10 @@ formatted string according to what an e-mail address should be.
 
 ## Using this package
 
-This package only provided the means to create your own Value Objects. For instance, you want to create a Value Object
+This package only provided the means to create your own Value Objects. The four main primitives types string, integer,
+float and boolean are included. Each one has its own interface, abstract and factory (except for boolean) available.
+With each factory you can add a corresponding value modifier.
+For instance, you want to create a Value Object
 for Money. You can use the interface [`FloatValueObject`](src/Interfaces/FloatValueObject.php) and implement according
 to your own need. To simplify things, you can also use the abstract
 class  [`FloatValueObject`](src/Abstracts/FloatValueObject.php). See the following example.
@@ -40,7 +43,7 @@ class  [`FloatValueObject`](src/Abstracts/FloatValueObject.php). See the followi
 ```php
 use FrankVanHest\ValueObjects\Abstracts\FloatValueObject;
 
-final class Money extends FloatValueObject
+final readonly class Money extends FloatValueObject
 {
     protected function assert(float $value): void
     {
@@ -63,7 +66,7 @@ interface [`StringValueObject`](src/Interfaces/StringValueObject.php) and we get
 use FrankVanHest\ValueObjects\Abstracts\FloatValueObject;
 use FrankVanHest\ValueObjects\Interfaces\StringValueObject;
 
-final class Money extends FloatValueObject implements StringValueObject
+final readonly class Money extends FloatValueObject implements StringValueObject
 {
     protected function assert(float $value): void
     {
@@ -74,7 +77,7 @@ final class Money extends FloatValueObject implements StringValueObject
     
     public function toString(): string
     {
-        return (string)$this->toFloat();
+        return sprintf('The value of Money is %f', $this->toFloat());
     }
     
     public static function fromString(string $value): static
@@ -86,6 +89,30 @@ final class Money extends FloatValueObject implements StringValueObject
         return new static((float)$value);
     }
 }
+```
+
+If you want to modify the value before the value object is created you can provide a value modified when using the
+factory to create the Money object.
+
+```php
+use FrankVanHest\ValueObjects\Interfaces\FloatValueModifier;
+
+final readonly class DivideBy implements FloatValueModifier
+{
+    public function __construct(private float $divideBy)
+    {    
+    }
+    
+    public function modify(float $value): float
+    {
+        return $value / $this->divideBy;
+    }
+}
+```
+```php
+use FrankVanHest\ValueObjects\Factories\FloatValueObjectFactory;
+
+$money = FloatValueObjectFactory::create(Money::class, 100.50, new DivideBy(10));
 ```
 
 As stated before when it comes to comparing two instances of Value Objects it only compares the value itself, not if the
@@ -101,11 +128,6 @@ $moneyA->equals($moneyB); // Returns true
 $moneyA->equals($moneyC); // Returns false
 $moneyA->equals(null); // Returns false
 ```
-
-## Predefined common Value Objects
-
-In the future multiple predefined Value Objects will become available, to make it easier not having to write the same
-thing over and over again I'm providing several common Value Objects packages.
 
 ## Contribution
 

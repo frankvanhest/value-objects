@@ -6,15 +6,12 @@ use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\FloatValueObject as FloatValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
-abstract class FloatValueObject implements FloatValueObjectInterface
+abstract readonly class FloatValueObject implements FloatValueObjectInterface
 {
     use JustDont;
 
-    private readonly float $value;
-
-    final protected function __construct(float $value)
+    final protected function __construct(private float $value)
     {
-        $this->value = $this->alterValueBeforeConstructing($value);
         $this->assert($this->value);
     }
 
@@ -26,14 +23,6 @@ abstract class FloatValueObject implements FloatValueObjectInterface
     final public function toFloat(): float
     {
         return $this->value;
-    }
-
-    /**
-     * Override this method to alter the value before constructing the instance
-     */
-    protected function alterValueBeforeConstructing(float $value): float
-    {
-        return $value;
     }
 
     final public static function fromFloat(float $value): static
