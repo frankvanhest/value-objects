@@ -10,7 +10,7 @@ abstract class BooleanValueObject implements BooleanValueObjectInterface
 {
     use JustDont;
 
-    final protected function __construct(private readonly bool $value)
+    final protected function __construct(private bool $value)
     {
     }
 

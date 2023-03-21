@@ -9,7 +9,7 @@ use FrankVanHest\ValueObjects\Interfaces\IntegerValueModifier;
 final class MultiplyIntegerValue implements IntegerValueModifier
 {
     public function __construct(
-        private readonly int $integer,
+        private int $integer,
     ) {
     }
 

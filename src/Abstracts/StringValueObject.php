@@ -10,7 +10,7 @@ abstract class StringValueObject implements StringValueObjectInterface
 {
     use JustDont;
 
-    final protected function __construct(private readonly string $value)
+    final protected function __construct(private string $value)
     {
         $this->assert($this->value);
     }

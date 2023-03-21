@@ -9,7 +9,7 @@ use FrankVanHest\ValueObjects\Interfaces\FloatValueModifier;
 final class AddFloatValue implements FloatValueModifier
 {
     public function __construct(
-        private readonly float $float,
+        private float $float,
     ) {
     }
 

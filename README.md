@@ -43,7 +43,7 @@ class  [`FloatValueObject`](src/Abstracts/FloatValueObject.php). See the followi
 ```php
 use FrankVanHest\ValueObjects\Abstracts\FloatValueObject;
 
-final readonly class Money extends FloatValueObject
+final class Money extends FloatValueObject
 {
     protected function assert(float $value): void
     {
@@ -66,7 +66,7 @@ interface [`StringValueObject`](src/Interfaces/StringValueObject.php) and we get
 use FrankVanHest\ValueObjects\Abstracts\FloatValueObject;
 use FrankVanHest\ValueObjects\Interfaces\StringValueObject;
 
-final readonly class Money extends FloatValueObject implements StringValueObject
+final class Money extends FloatValueObject implements StringValueObject
 {
     protected function assert(float $value): void
     {
@@ -97,7 +97,7 @@ factory to create the Money object.
 ```php
 use FrankVanHest\ValueObjects\Interfaces\FloatValueModifier;
 
-final readonly class DivideBy implements FloatValueModifier
+final class DivideBy implements FloatValueModifier
 {
     public function __construct(private float $divideBy)
     {    

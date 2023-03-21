@@ -9,7 +9,7 @@ use FrankVanHest\ValueObjects\Interfaces\StringValueModifier;
 final class PrefixStringValue implements StringValueModifier
 {
     public function __construct(
-        private readonly string $string,
+        private string $string,
     ) {
     }
 
