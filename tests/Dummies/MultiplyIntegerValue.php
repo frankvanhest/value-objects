@@ -6,10 +6,10 @@ namespace FrankVanHest\ValueObjects\Tests\Dummies;
 
 use FrankVanHest\ValueObjects\Interfaces\IntegerValueModifier;
 
-final readonly class MultiplyIntegerValue implements IntegerValueModifier
+final class MultiplyIntegerValue implements IntegerValueModifier
 {
     public function __construct(
-        private int $integer,
+        private readonly int $integer,
     ) {
     }
 

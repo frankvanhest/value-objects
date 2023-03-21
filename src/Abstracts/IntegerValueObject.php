@@ -6,11 +6,11 @@ use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\IntegerValueObject as IntegerValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
-abstract readonly class IntegerValueObject implements IntegerValueObjectInterface
+abstract class IntegerValueObject implements IntegerValueObjectInterface
 {
     use JustDont;
 
-    final private function __construct(private int $value)
+    final private function __construct(private readonly int $value)
     {
         $this->assert($this->value);
     }

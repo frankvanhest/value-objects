@@ -6,11 +6,11 @@ use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\StringValueObject as StringValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
-abstract readonly class StringValueObject implements StringValueObjectInterface
+abstract class StringValueObject implements StringValueObjectInterface
 {
     use JustDont;
 
-    final protected function __construct(private string $value)
+    final protected function __construct(private readonly string $value)
     {
         $this->assert($this->value);
     }

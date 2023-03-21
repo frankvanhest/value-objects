@@ -5,7 +5,7 @@ namespace FrankVanHest\ValueObjects\Tests\Dummies;
 use FrankVanHest\ValueObjects\Abstracts\IntegerValueObject;
 use InvalidArgumentException;
 
-final readonly class IntegerGreaterThanZero extends IntegerValueObject
+final class IntegerGreaterThanZero extends IntegerValueObject
 {
     protected function assert(int $value): void
     {

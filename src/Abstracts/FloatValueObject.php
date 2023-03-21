@@ -6,11 +6,11 @@ use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\FloatValueObject as FloatValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
-abstract readonly class FloatValueObject implements FloatValueObjectInterface
+abstract class FloatValueObject implements FloatValueObjectInterface
 {
     use JustDont;
 
-    final protected function __construct(private float $value)
+    final protected function __construct(private readonly float $value)
     {
         $this->assert($this->value);
     }

@@ -6,10 +6,10 @@ namespace FrankVanHest\ValueObjects\Tests\Dummies;
 
 use FrankVanHest\ValueObjects\Interfaces\StringValueModifier;
 
-final readonly class PrefixStringValue implements StringValueModifier
+final class PrefixStringValue implements StringValueModifier
 {
     public function __construct(
-        private string $string,
+        private readonly string $string,
     ) {
     }
 

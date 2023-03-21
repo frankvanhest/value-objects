@@ -5,7 +5,7 @@ namespace FrankVanHest\ValueObjects\Tests\Dummies;
 use FrankVanHest\ValueObjects\Abstracts\StringValueObject;
 use InvalidArgumentException;
 
-final readonly class NotEmptyString extends StringValueObject
+final class NotEmptyString extends StringValueObject
 {
     protected function assert(string $value): void
     {

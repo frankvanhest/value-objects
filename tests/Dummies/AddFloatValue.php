@@ -6,10 +6,10 @@ namespace FrankVanHest\ValueObjects\Tests\Dummies;
 
 use FrankVanHest\ValueObjects\Interfaces\FloatValueModifier;
 
-final readonly class AddFloatValue implements FloatValueModifier
+final class AddFloatValue implements FloatValueModifier
 {
     public function __construct(
-        private float $float,
+        private readonly float $float,
     ) {
     }
 

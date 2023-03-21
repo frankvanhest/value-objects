@@ -6,11 +6,11 @@ use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\BooleanValueObject as BooleanValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
-abstract readonly class BooleanValueObject implements BooleanValueObjectInterface
+abstract class BooleanValueObject implements BooleanValueObjectInterface
 {
     use JustDont;
 
-    final protected function __construct(private bool $value)
+    final protected function __construct(private readonly bool $value)
     {
     }
 
