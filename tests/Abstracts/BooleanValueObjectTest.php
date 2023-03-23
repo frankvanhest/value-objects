@@ -38,6 +38,6 @@ final class BooleanValueObjectTest extends TestCase
     public function testFromBoolean(): void
     {
         $value = true;
-        self::assertSame($value, AreWeGreat::fromBoolean($value)->toBoolean());
+        self::assertSame($value, AreWeGreat::fromBoolean($value)->asBoolean());
     }
 }

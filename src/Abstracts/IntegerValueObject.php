@@ -17,10 +17,10 @@ abstract class IntegerValueObject implements IntegerValueObjectInterface
 
     final public function equals(?ValueObject $valueObject): bool
     {
-        return $valueObject instanceof static && $valueObject->toInteger() === $this->value;
+        return $valueObject instanceof static && $valueObject->asInteger() === $this->value;
     }
 
-    final public function toInteger(): int
+    final public function asInteger(): int
     {
         return $this->value;
     }

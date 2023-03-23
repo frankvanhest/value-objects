@@ -40,7 +40,7 @@ final class StringValueObjectTest extends TestCase
     {
         $value = 'foo';
         $expectedValue = 'foo';
-        self::assertSame($expectedValue, NotEmptyString::fromString($value)->toString());
+        self::assertSame($expectedValue, NotEmptyString::fromString($value)->asString());
     }
 
     public function testFromStringWhenAssertFailed(): void

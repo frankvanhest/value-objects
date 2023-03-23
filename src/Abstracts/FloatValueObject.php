@@ -17,10 +17,10 @@ abstract class FloatValueObject implements FloatValueObjectInterface
 
     final public function equals(?ValueObject $valueObject): bool
     {
-        return $valueObject instanceof static && $valueObject->toFloat() === $this->value;
+        return $valueObject instanceof static && $valueObject->asFloat() === $this->value;
     }
 
-    final public function toFloat(): float
+    final public function asFloat(): float
     {
         return $this->value;
     }

@@ -99,7 +99,7 @@ final class Money extends FloatValueObject implements StringValueObject
     
     public function toString(): string
     {
-        return sprintf('The value of Money is %f', $this->toFloat());
+        return sprintf('The value of Money is %f', $this->asFloat());
     }
     
     public static function fromString(string $value): static
