@@ -6,7 +6,7 @@ namespace FrankVanHest\ValueObjects\Interfaces;
 
 interface IntegerValueObject extends ValueObject
 {
-    public function toInteger(): int;
+    public function asInteger(): int;
 
     public static function fromInteger(int $value): static;
 }

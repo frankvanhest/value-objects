@@ -17,10 +17,10 @@ abstract readonly class StringValueObject implements StringValueObjectInterface
 
     final public function equals(?ValueObject $valueObject): bool
     {
-        return $valueObject instanceof static && $valueObject->toString() === $this->value;
+        return $valueObject instanceof static && $valueObject->asString() === $this->value;
     }
 
-    final public function toString(): string
+    final public function asString(): string
     {
         return $this->value;
     }

@@ -16,10 +16,10 @@ abstract readonly class BooleanValueObject implements BooleanValueObjectInterfac
 
     final public function equals(?ValueObject $valueObject): bool
     {
-        return $valueObject instanceof static && $valueObject->toBoolean() === $this->value;
+        return $valueObject instanceof static && $valueObject->asBoolean() === $this->value;
     }
 
-    final public function toBoolean(): bool
+    final public function asBoolean(): bool
     {
         return $this->value;
     }
