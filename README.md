@@ -5,7 +5,9 @@ PHP.
 
 * [Installation](#installation)
 * [What is a Value Object](#what-is-a-value-object)
-* [Using this package](#using-this-package)
+* [Purpose](#purpose)
+* [Installation](#installation)
+* [Usage](#usage)
 * [Contribution](#contribution)
 * [License](#license)
 
@@ -30,7 +32,27 @@ Whenever an instance of a Value Object is passed around your application, you ca
 you expect it to be. For example, if you have a Value Object Email, you can be sure that the value is a correctly
 formatted string according to what an e-mail address should be.
 
-## Using this package
+## Purpose
+
+The purpose of this package is to provide a set of interfaces, abstracts and factories to get you started with value
+objects. It should not be considered as a silver bullet. You should always be use the best tools for your application.
+That being said, what could be reasons to use this package. Like stated before, if you are new to value objects this
+package will get you started and provide a learning opportunity to get a better understanding of value objects.
+Another reason is that you'll don't need to write the same basic code for your value objects, but again do not use it as
+a silver bullet. When you encounter a value object that cannot or cannot easily be created by using this package, do not
+try to do so. Write the complete implementation yourself.
+When you are more experienced with value objects and programming in general, this package is probably not for you.
+That is of course that is entirely up to you.
+
+## Installation
+
+A most of the packages for PHP, the installation is done by using [Composer](https://getcomposer.org).
+
+```shell
+composer require frankvanhest/value-objects
+```
+
+## Usage
 
 This package only provided the means to create your own Value Objects. The four main primitives types string, integer,
 float and boolean are included. Each one has its own interface, abstract and factory (except for boolean) available.
