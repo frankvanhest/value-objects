@@ -44,7 +44,7 @@ final class FloatValueObjectTest extends TestCase
     {
         $value = 0.2;
         $expectedValue = 0.2;
-        self::assertSame($expectedValue, FloatGreaterThanZeroPointOne::fromFloat($value)->toFloat());
+        self::assertSame($expectedValue, FloatGreaterThanZeroPointOne::fromFloat($value)->asFloat());
     }
 
     public function testFromFloatWhenAssertFailed(): void

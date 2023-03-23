@@ -6,7 +6,7 @@ namespace FrankVanHest\ValueObjects\Interfaces;
 
 interface StringValueObject extends ValueObject
 {
-    public function toString(): string;
+    public function asString(): string;
 
     public static function fromString(string $value): static;
 }

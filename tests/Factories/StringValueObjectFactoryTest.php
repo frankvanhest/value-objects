@@ -34,6 +34,6 @@ final class StringValueObjectFactoryTest extends TestCase
             NotEmptyString::class,
             $valueObject
         );
-        self::assertSame('one-two-not-empty', $valueObject->toString());
+        self::assertSame('one-two-not-empty', $valueObject->asString());
     }
 }

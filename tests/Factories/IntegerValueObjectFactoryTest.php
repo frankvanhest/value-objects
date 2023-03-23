@@ -34,6 +34,6 @@ final class IntegerValueObjectFactoryTest extends TestCase
             IntegerGreaterThanZero::class,
             $valueObject
         );
-        self::assertSame(8, $valueObject->toInteger());
+        self::assertSame(8, $valueObject->asInteger());
     }
 }

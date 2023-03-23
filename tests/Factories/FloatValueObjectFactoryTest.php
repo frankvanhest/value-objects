@@ -34,6 +34,6 @@ final class FloatValueObjectFactoryTest extends TestCase
             FloatGreaterThanZeroPointOne::class,
             $valueObject
         );
-        self::assertSame(0.7, $valueObject->toFloat());
+        self::assertSame(0.7, $valueObject->asFloat());
     }
 }
