@@ -6,6 +6,7 @@ namespace FrankVanHest\ValueObjects\Abstracts;
 
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodGet;
 
 trait DontUseMagicMethods
 {
@@ -23,5 +24,10 @@ trait DontUseMagicMethods
     final public static function __callStatic(string $name, array $arguments): void
     {
         throw new DontUseMagicMethodCallStatic(static::class);
+    }
+
+    final public function __get(string $name): void
+    {
+        throw new DontUseMagicMethodGet(static::class);
     }
 }
