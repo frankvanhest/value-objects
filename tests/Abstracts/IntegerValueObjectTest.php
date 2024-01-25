@@ -128,4 +128,14 @@ final class IntegerValueObjectTest extends TestCase
         /** @phpstan-ignore-next-line */
         unset($object->nonExistingProperty);
     }
+
+    public function testPreventedMagicMethodsAreFinal(): void
+    {
+        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__call'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__callStatic'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__get'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__isset'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__set'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__unset'))->isFinal());
+    }
 }

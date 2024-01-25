@@ -124,4 +124,14 @@ final class StringValueObjectTest extends TestCase
         /** @phpstan-ignore-next-line */
         unset($foo->nonExistingProperty);
     }
+
+    public function testPreventedMagicMethodsAreFinal(): void
+    {
+        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__call'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__callStatic'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__get'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__isset'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__set'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__unset'))->isFinal());
+    }
 }

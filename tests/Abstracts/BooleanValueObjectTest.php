@@ -118,4 +118,14 @@ final class BooleanValueObjectTest extends TestCase
         /** @phpstan-ignore-next-line */
         unset($object->nonExistingProperty);
     }
+
+    public function testPreventedMagicMethodsAreFinal(): void
+    {
+        self::assertTrue((new \ReflectionMethod(BooleanValueObject::class, '__call'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(BooleanValueObject::class, '__callStatic'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(BooleanValueObject::class, '__get'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(BooleanValueObject::class, '__isset'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(BooleanValueObject::class, '__set'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(BooleanValueObject::class, '__unset'))->isFinal());
+    }
 }

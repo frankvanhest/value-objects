@@ -31,12 +31,12 @@ trait DontUseMagicMethods
         throw new DontUseMagicMethodIsset(static::class);
     }
 
-    public function __set(string $name, mixed $value): void
+    final public function __set(string $name, mixed $value): void
     {
         throw new DontUseMagicMethodSet(static::class);
     }
 
-    public function __unset(string $name): void
+    final public function __unset(string $name): void
     {
         throw new DontUseMagicMethodUnset(static::class);
     }

@@ -130,4 +130,14 @@ final class FloatValueObjectTest extends TestCase
         /** @phpstan-ignore-next-line */
         unset($object->nonExistingProperty);
     }
+
+    public function testPreventedMagicMethodsAreFinal(): void
+    {
+        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__call'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__callStatic'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__get'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__isset'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__set'))->isFinal());
+        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__unset'))->isFinal());
+    }
 }
