@@ -3,6 +3,7 @@
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\NotEmptyString;
 use PHPUnit\Framework\TestCase;
@@ -57,5 +58,16 @@ final class StringValueObjectTest extends TestCase
         $this->expectExceptionMessage(sprintf('Don\t use magic method __call in class %s', NotEmptyString::class));
         /** @phpstan-ignore-next-line */
         $foo->nonExistingMethod();
+    }
+
+    public function testPreventMagicCallStatic(): void
+    {
+        $foo = NotEmptyString::fromString('foo');
+        $this->expectException(DontUseMagicMethodCallStatic::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __callStatic in class %s', NotEmptyString::class)
+        );
+        /** @phpstan-ignore-next-line */
+        $foo::nonExistingStaticMethod();
     }
 }

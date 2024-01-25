@@ -3,6 +3,7 @@
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\IntegerGreaterThanZero;
 use PHPUnit\Framework\TestCase;
@@ -61,5 +62,16 @@ final class IntegerValueObjectTest extends TestCase
         );
         /** @phpstan-ignore-next-line */
         $object->nonExistingMethod();
+    }
+
+    public function testPreventMagicCallStatic(): void
+    {
+        $object = IntegerGreaterThanZero::fromInteger(1);
+        $this->expectException(DontUseMagicMethodCallStatic::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __callStatic in class %s', IntegerGreaterThanZero::class)
+        );
+        /** @phpstan-ignore-next-line */
+        $object::nonExistingStaticMethod();
     }
 }

@@ -3,6 +3,7 @@
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\FloatGreaterThanZeroPointOne;
 use PHPUnit\Framework\TestCase;
@@ -63,5 +64,16 @@ final class FloatValueObjectTest extends TestCase
         );
         /** @phpstan-ignore-next-line */
         $object->nonExistingMethod();
+    }
+
+    public function testPreventMagicCallStatic(): void
+    {
+        $object = FloatGreaterThanZeroPointOne::fromFloat(0.2);
+        $this->expectException(DontUseMagicMethodCallStatic::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __callStatic in class %s', FloatGreaterThanZeroPointOne::class)
+        );
+        /** @phpstan-ignore-next-line */
+        $object::nonExistingStaticMethod();
     }
 }

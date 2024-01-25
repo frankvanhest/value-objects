@@ -3,6 +3,7 @@
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\AreWeGreat;
 use PHPUnit\Framework\TestCase;
@@ -51,5 +52,16 @@ final class BooleanValueObjectTest extends TestCase
         );
         /** @phpstan-ignore-next-line */
         $object->nonExistingMethod();
+    }
+
+    public function testPreventMagicCallStatic(): void
+    {
+        $object = AreWeGreat::fromBoolean(true);
+        $this->expectException(DontUseMagicMethodCallStatic::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __callStatic in class %s', AreWeGreat::class)
+        );
+        /** @phpstan-ignore-next-line */
+        $object::nonExistingStaticMethod();
     }
 }
