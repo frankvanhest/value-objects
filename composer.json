@@ -10,12 +10,12 @@
         }
     ],
     "require": {
-        "php": "~8.2.0"
+        "php": "~8.2.0 || ~8.3.0"
     },
     "require-dev": {
         "beberlei/assert": "~v3.3",
-        "infection/infection": "^0.26",
-        "phpstan/phpstan": "^1.9",
+        "infection/infection": "^0.27",
+        "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^9.5",
         "roave/security-advisories": "dev-latest"
     },
