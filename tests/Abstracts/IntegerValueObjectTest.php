@@ -2,6 +2,7 @@
 
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
+use FrankVanHest\ValueObjects\Abstracts\IntegerValueObject;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
@@ -11,6 +12,11 @@ use Throwable;
 
 final class IntegerValueObjectTest extends TestCase
 {
+    public function testClassIsReadonly(): void
+    {
+        self::assertTrue((new \ReflectionClass(IntegerValueObject::class))->isReadOnly());
+    }
+
     public function testEquals(): void
     {
         $value = 1;

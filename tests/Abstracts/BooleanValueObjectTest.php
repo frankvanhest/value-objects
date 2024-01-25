@@ -2,6 +2,7 @@
 
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
+use FrankVanHest\ValueObjects\Abstracts\BooleanValueObject;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
@@ -10,6 +11,11 @@ use PHPUnit\Framework\TestCase;
 
 final class BooleanValueObjectTest extends TestCase
 {
+    public function testClassIsReadonly(): void
+    {
+        self::assertTrue((new \ReflectionClass(BooleanValueObject::class))->isReadOnly());
+    }
+
     public function testEquals(): void
     {
         $value = true;

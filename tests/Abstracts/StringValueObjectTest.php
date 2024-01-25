@@ -2,6 +2,7 @@
 
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
+use FrankVanHest\ValueObjects\Abstracts\StringValueObject;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
@@ -11,6 +12,11 @@ use Throwable;
 
 final class StringValueObjectTest extends TestCase
 {
+    public function testClassIsReadonly(): void
+    {
+        self::assertTrue((new \ReflectionClass(StringValueObject::class))->isReadOnly());
+    }
+
     public function testEquals(): void
     {
         $value = 'foo';
