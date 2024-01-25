@@ -8,6 +8,7 @@ use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodGet;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodIsset;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodSet;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodUnset;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\NotEmptyString;
 use PHPUnit\Framework\TestCase;
@@ -111,5 +112,16 @@ final class StringValueObjectTest extends TestCase
         );
         /** @phpstan-ignore-next-line */
         $foo->nonExistingProperty = 1;
+    }
+
+    public function testPreventMagicUnset(): void
+    {
+        $foo = NotEmptyString::fromString('foo');
+        $this->expectException(DontUseMagicMethodUnset::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __unset in class %s', NotEmptyString::class)
+        );
+        /** @phpstan-ignore-next-line */
+        unset($foo->nonExistingProperty);
     }
 }

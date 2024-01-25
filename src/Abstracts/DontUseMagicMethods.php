@@ -9,6 +9,7 @@ use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodGet;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodIsset;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodSet;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodUnset;
 
 trait DontUseMagicMethods
 {
@@ -30,9 +31,14 @@ trait DontUseMagicMethods
         throw new DontUseMagicMethodIsset(static::class);
     }
 
-    public function __set(string $name, $value): void
+    public function __set(string $name, mixed $value): void
     {
         throw new DontUseMagicMethodSet(static::class);
+    }
+
+    public function __unset(string $name): void
+    {
+        throw new DontUseMagicMethodUnset(static::class);
     }
 
     /**
