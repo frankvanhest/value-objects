@@ -6,6 +6,7 @@ use FrankVanHest\ValueObjects\Abstracts\FloatValueObject;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodGet;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodSet;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\FloatGreaterThanZeroPointOne;
 use PHPUnit\Framework\TestCase;
@@ -93,5 +94,16 @@ final class FloatValueObjectTest extends TestCase
         );
         /** @phpstan-ignore-next-line */
         $object->nonExistingProperty;
+    }
+
+    public function testPreventMagicSet(): void
+    {
+        $object = FloatGreaterThanZeroPointOne::fromFloat(0.2);
+        $this->expectException(DontUseMagicMethodSet::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __set in class %s', FloatGreaterThanZeroPointOne::class)
+        );
+        /** @phpstan-ignore-next-line */
+        $object->nonExistingProperty = 1;
     }
 }

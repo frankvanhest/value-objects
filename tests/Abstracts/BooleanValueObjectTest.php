@@ -6,6 +6,7 @@ use FrankVanHest\ValueObjects\Abstracts\BooleanValueObject;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodGet;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodSet;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\AreWeGreat;
 use PHPUnit\Framework\TestCase;
@@ -81,5 +82,16 @@ final class BooleanValueObjectTest extends TestCase
         );
         /** @phpstan-ignore-next-line */
         $object->nonExistingProperty;
+    }
+
+    public function testPreventMagicSet(): void
+    {
+        $object = AreWeGreat::fromBoolean(true);
+        $this->expectException(DontUseMagicMethodSet::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __set in class %s', AreWeGreat::class)
+        );
+        /** @phpstan-ignore-next-line */
+        $object->nonExistingProperty = 1;
     }
 }
