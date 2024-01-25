@@ -2,14 +2,11 @@
 
 namespace FrankVanHest\ValueObjects\Abstracts;
 
-use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\StringValueObject as StringValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
 abstract readonly class StringValueObject implements StringValueObjectInterface
 {
-    use JustDont;
-
     final protected function __construct(private string $value)
     {
         $this->assert($this->value);

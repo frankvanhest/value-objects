@@ -2,14 +2,11 @@
 
 namespace FrankVanHest\ValueObjects\Abstracts;
 
-use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\BooleanValueObject as BooleanValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
 abstract readonly class BooleanValueObject implements BooleanValueObjectInterface
 {
-    use JustDont;
-
     final protected function __construct(private bool $value)
     {
     }

@@ -10,8 +10,7 @@
         }
     ],
     "require": {
-        "php": "~8.2.0",
-        "roave/dont": "^1.6"
+        "php": "~8.2.0"
     },
     "require-dev": {
         "beberlei/assert": "~v3.3",

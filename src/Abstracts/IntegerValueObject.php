@@ -2,14 +2,11 @@
 
 namespace FrankVanHest\ValueObjects\Abstracts;
 
-use Dont\JustDont;
 use FrankVanHest\ValueObjects\Interfaces\IntegerValueObject as IntegerValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
 abstract readonly class IntegerValueObject implements IntegerValueObjectInterface
 {
-    use JustDont;
-
     final private function __construct(private int $value)
     {
         $this->assert($this->value);
