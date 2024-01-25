@@ -7,19 +7,21 @@ use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
 abstract readonly class StringValueObject implements StringValueObjectInterface
 {
+    use DontUseMagicMethods;
+
     final protected function __construct(private string $value)
     {
         $this->assert($this->value);
     }
 
-    final public function equals(?ValueObject $valueObject): bool
-    {
-        return $valueObject instanceof static && $valueObject->asString() === $this->value;
-    }
-
     final public function asString(): string
     {
         return $this->value;
+    }
+
+    final public function equals(?ValueObject $valueObject): bool
+    {
+        return $valueObject instanceof static && $valueObject->asString() === $this->value;
     }
 
     final public static function fromString(string $value): static

@@ -7,6 +7,8 @@ use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
 abstract readonly class BooleanValueObject implements BooleanValueObjectInterface
 {
+    use DontUseMagicMethods;
+
     final protected function __construct(private bool $value)
     {
     }

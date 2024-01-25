@@ -7,6 +7,8 @@ use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
 abstract readonly class FloatValueObject implements FloatValueObjectInterface
 {
+    use DontUseMagicMethods;
+
     final protected function __construct(private float $value)
     {
         $this->assert($this->value);

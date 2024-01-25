@@ -2,6 +2,7 @@
 
 namespace FrankVanHest\ValueObjects\Tests\Abstracts;
 
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\IntegerGreaterThanZero;
 use PHPUnit\Framework\TestCase;
@@ -12,7 +13,9 @@ final class IntegerValueObjectTest extends TestCase
     public function testEquals(): void
     {
         $value = 1;
-        self::assertTrue(IntegerGreaterThanZero::fromInteger($value)->equals(IntegerGreaterThanZero::fromInteger($value)));
+        self::assertTrue(
+            IntegerGreaterThanZero::fromInteger($value)->equals(IntegerGreaterThanZero::fromInteger($value))
+        );
     }
 
     public function testEqualsWhenValueObjectIsNotInteger(): void
@@ -47,5 +50,16 @@ final class IntegerValueObjectTest extends TestCase
     {
         $this->expectException(Throwable::class);
         IntegerGreaterThanZero::fromInteger(0);
+    }
+
+    public function testPreventMagicCall(): void
+    {
+        $object = IntegerGreaterThanZero::fromInteger(1);
+        $this->expectException(DontUseMagicMethodCall::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __call in class %s', IntegerGreaterThanZero::class)
+        );
+        /** @phpstan-ignore-next-line */
+        $object->nonExistingMethod();
     }
 }

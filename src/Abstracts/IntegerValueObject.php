@@ -7,6 +7,8 @@ use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 
 abstract readonly class IntegerValueObject implements IntegerValueObjectInterface
 {
+    use DontUseMagicMethods;
+
     final private function __construct(private int $value)
     {
         $this->assert($this->value);
