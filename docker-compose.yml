@@ -6,3 +6,9 @@ services:
       - .:/var/www/html
       - ./docker/php82/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - ./docker/php82/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+  php83:
+    build: ./docker/php83/
+    volumes:
+      - .:/var/www/html
+      - ./docker/php83/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./docker/php83/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
