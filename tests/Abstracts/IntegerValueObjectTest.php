@@ -6,6 +6,7 @@ use FrankVanHest\ValueObjects\Abstracts\IntegerValueObject;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCall;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodCallStatic;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodGet;
+use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodIsset;
 use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodSet;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\IntegerGreaterThanZero;
@@ -92,6 +93,17 @@ final class IntegerValueObjectTest extends TestCase
         );
         /** @phpstan-ignore-next-line */
         $object->nonExistingProperty;
+    }
+
+    public function testPreventMagicIsset(): void
+    {
+        $object = IntegerGreaterThanZero::fromInteger(1);
+        $this->expectException(DontUseMagicMethodIsset::class);
+        $this->expectExceptionMessage(
+            sprintf('Don\t use magic method __isset in class %s', IntegerGreaterThanZero::class)
+        );
+        /** @phpstan-ignore-next-line */
+        isset($object->nonExistingProperty);
     }
 
     public function testPreventMagicSet(): void
