@@ -12,13 +12,15 @@ use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodUnset;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\IntegerGreaterThanZero;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionMethod;
 use Throwable;
 
 final class IntegerValueObjectTest extends TestCase
 {
     public function testClassIsReadonly(): void
     {
-        self::assertTrue((new \ReflectionClass(IntegerValueObject::class))->isReadOnly());
+        self::assertTrue((new ReflectionClass(IntegerValueObject::class))->isReadOnly());
     }
 
     public function testEquals(): void
@@ -131,11 +133,11 @@ final class IntegerValueObjectTest extends TestCase
 
     public function testPreventedMagicMethodsAreFinal(): void
     {
-        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__call'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__callStatic'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__get'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__isset'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__set'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(IntegerValueObject::class, '__unset'))->isFinal());
+        self::assertTrue((new ReflectionMethod(IntegerValueObject::class, '__call'))->isFinal());
+        self::assertTrue((new ReflectionMethod(IntegerValueObject::class, '__callStatic'))->isFinal());
+        self::assertTrue((new ReflectionMethod(IntegerValueObject::class, '__get'))->isFinal());
+        self::assertTrue((new ReflectionMethod(IntegerValueObject::class, '__isset'))->isFinal());
+        self::assertTrue((new ReflectionMethod(IntegerValueObject::class, '__set'))->isFinal());
+        self::assertTrue((new ReflectionMethod(IntegerValueObject::class, '__unset'))->isFinal());
     }
 }

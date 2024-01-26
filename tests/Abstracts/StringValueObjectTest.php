@@ -12,13 +12,15 @@ use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodUnset;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\NotEmptyString;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionMethod;
 use Throwable;
 
 final class StringValueObjectTest extends TestCase
 {
     public function testClassIsReadonly(): void
     {
-        self::assertTrue((new \ReflectionClass(StringValueObject::class))->isReadOnly());
+        self::assertTrue((new ReflectionClass(StringValueObject::class))->isReadOnly());
     }
 
     public function testEquals(): void
@@ -127,11 +129,11 @@ final class StringValueObjectTest extends TestCase
 
     public function testPreventedMagicMethodsAreFinal(): void
     {
-        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__call'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__callStatic'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__get'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__isset'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__set'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(StringValueObject::class, '__unset'))->isFinal());
+        self::assertTrue((new ReflectionMethod(StringValueObject::class, '__call'))->isFinal());
+        self::assertTrue((new ReflectionMethod(StringValueObject::class, '__callStatic'))->isFinal());
+        self::assertTrue((new ReflectionMethod(StringValueObject::class, '__get'))->isFinal());
+        self::assertTrue((new ReflectionMethod(StringValueObject::class, '__isset'))->isFinal());
+        self::assertTrue((new ReflectionMethod(StringValueObject::class, '__set'))->isFinal());
+        self::assertTrue((new ReflectionMethod(StringValueObject::class, '__unset'))->isFinal());
     }
 }

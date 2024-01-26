@@ -12,13 +12,15 @@ use FrankVanHest\ValueObjects\Exceptions\DontUseMagicMethodUnset;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
 use FrankVanHest\ValueObjects\Tests\Dummies\FloatGreaterThanZeroPointOne;
 use PHPUnit\Framework\TestCase;
+use ReflectionClass;
+use ReflectionMethod;
 use Throwable;
 
 final class FloatValueObjectTest extends TestCase
 {
     public function testClassIsReadonly(): void
     {
-        self::assertTrue((new \ReflectionClass(FloatValueObject::class))->isReadOnly());
+        self::assertTrue((new ReflectionClass(FloatValueObject::class))->isReadOnly());
     }
 
     public function testEquals(): void
@@ -133,11 +135,11 @@ final class FloatValueObjectTest extends TestCase
 
     public function testPreventedMagicMethodsAreFinal(): void
     {
-        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__call'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__callStatic'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__get'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__isset'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__set'))->isFinal());
-        self::assertTrue((new \ReflectionMethod(FloatValueObject::class, '__unset'))->isFinal());
+        self::assertTrue((new ReflectionMethod(FloatValueObject::class, '__call'))->isFinal());
+        self::assertTrue((new ReflectionMethod(FloatValueObject::class, '__callStatic'))->isFinal());
+        self::assertTrue((new ReflectionMethod(FloatValueObject::class, '__get'))->isFinal());
+        self::assertTrue((new ReflectionMethod(FloatValueObject::class, '__isset'))->isFinal());
+        self::assertTrue((new ReflectionMethod(FloatValueObject::class, '__set'))->isFinal());
+        self::assertTrue((new ReflectionMethod(FloatValueObject::class, '__unset'))->isFinal());
     }
 }

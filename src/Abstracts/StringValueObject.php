@@ -4,6 +4,7 @@ namespace FrankVanHest\ValueObjects\Abstracts;
 
 use FrankVanHest\ValueObjects\Interfaces\StringValueObject as StringValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
+use Throwable;
 
 abstract readonly class StringValueObject implements StringValueObjectInterface
 {
@@ -30,7 +31,7 @@ abstract readonly class StringValueObject implements StringValueObjectInterface
     }
 
     /**
-     * @throws \Throwable When the string value does not match the requirements
+     * @throws Throwable When the string value does not match the requirements
      */
     abstract protected function assert(string $value): void;
 }

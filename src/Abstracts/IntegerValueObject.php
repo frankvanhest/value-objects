@@ -4,6 +4,7 @@ namespace FrankVanHest\ValueObjects\Abstracts;
 
 use FrankVanHest\ValueObjects\Interfaces\IntegerValueObject as IntegerValueObjectInterface;
 use FrankVanHest\ValueObjects\Interfaces\ValueObject;
+use Throwable;
 
 abstract readonly class IntegerValueObject implements IntegerValueObjectInterface
 {
@@ -14,14 +15,14 @@ abstract readonly class IntegerValueObject implements IntegerValueObjectInterfac
         $this->assert($this->value);
     }
 
-    final public function equals(?ValueObject $valueObject): bool
-    {
-        return $valueObject instanceof static && $valueObject->asInteger() === $this->value;
-    }
-
     final public function asInteger(): int
     {
         return $this->value;
+    }
+
+    final public function equals(?ValueObject $valueObject): bool
+    {
+        return $valueObject instanceof static && $valueObject->asInteger() === $this->value;
     }
 
     final public static function fromInteger(int $value): static
@@ -30,7 +31,7 @@ abstract readonly class IntegerValueObject implements IntegerValueObjectInterfac
     }
 
     /**
-     * @throws \Throwable When the integer value does not match the requirements
+     * @throws Throwable When the integer value does not match the requirements
      */
     abstract protected function assert(int $value): void;
 }

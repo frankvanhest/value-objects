@@ -11,15 +11,6 @@ use PHPUnit\Framework\TestCase;
 
 final class IntegerValueObjectFactoryTest extends TestCase
 {
-    public function testFactoryWithoutValueAlteration(): void
-    {
-        $valueObject = IntegerValueObjectFactory::create(IntegerGreaterThanZero::class, 2);
-        self::assertInstanceOf(
-            IntegerGreaterThanZero::class,
-            $valueObject
-        );
-    }
-
     public function testFactoryWithValueAlteration(): void
     {
         $valueModifierFirst = new MultiplyIntegerValue(2);
@@ -35,5 +26,14 @@ final class IntegerValueObjectFactoryTest extends TestCase
             $valueObject
         );
         self::assertSame(8, $valueObject->asInteger());
+    }
+
+    public function testFactoryWithoutValueAlteration(): void
+    {
+        $valueObject = IntegerValueObjectFactory::create(IntegerGreaterThanZero::class, 2);
+        self::assertInstanceOf(
+            IntegerGreaterThanZero::class,
+            $valueObject
+        );
     }
 }
