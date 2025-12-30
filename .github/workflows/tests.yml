@@ -11,7 +11,7 @@ jobs:
     strategy:
       fail-fast: true
       matrix:
-        php: [8.2, 8.3]
+        php: [8.2, 8.3, 8.4, 8.5]
         composer-flags: [ '' ]
         stability: ['prefer-stable']
         experimental: [false]
@@ -52,5 +52,5 @@ jobs:
 
       - name: Infection
         if: ${{ matrix.experimental == false }}
-        run: vendor/bin/infection --min-msi=100 --min-covered-msi=100 --show-mutations --only-covered --threads=4 --test-framework-options="--configuration=phpunit.xml.dist" --configuration=infection.json.dist
+        run: vendor/bin/infection --min-msi=100 --min-covered-msi=100 --show-mutations --only-covered --threads=4 --configuration=infection.json.dist
 
