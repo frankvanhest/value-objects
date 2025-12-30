@@ -15,7 +15,7 @@
     "require-dev": {
         "beberlei/assert": "~v3.3",
         "infection/infection": "^0.32",
-        "phpstan/phpstan": "^1.10",
+        "phpstan/phpstan": "^2.1",
         "phpunit/phpunit": "^10.5",
         "roave/security-advisories": "dev-latest"
     },

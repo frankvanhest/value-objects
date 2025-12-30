@@ -123,7 +123,6 @@ final class StringValueObjectTest extends TestCase
         $this->expectExceptionMessage(
             sprintf('Don\t use magic method __unset in class %s', NotEmptyString::class)
         );
-        /** @phpstan-ignore-next-line */
         unset($foo->nonExistingProperty);
     }
 
