@@ -1,4 +1,3 @@
-version: "3.7"
 services:
   php82:
     build: ./docker/php82/
@@ -6,9 +5,24 @@ services:
       - .:/var/www/html
       - ./docker/php82/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - ./docker/php82/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+
   php83:
     build: ./docker/php83/
     volumes:
       - .:/var/www/html
       - ./docker/php83/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
       - ./docker/php83/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+
+  php84:
+    build: ./docker/php84/
+    volumes:
+      - .:/var/www/html
+      - ./docker/php84/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./docker/php84/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
+
+  php85:
+    build: ./docker/php85/
+    volumes:
+      - .:/var/www/html
+      - ./docker/php85/conf.d/xdebug.ini:/usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini
+      - ./docker/php85/conf.d/error_reporting.ini:/usr/local/etc/php/conf.d/error_reporting.ini
