@@ -10,8 +10,9 @@ abstract readonly class StringValueObject implements StringValueObjectInterface
 {
     use DontUseMagicMethods;
 
-    final protected function __construct(private string $value)
-    {
+    final protected function __construct(
+        private(set) string $value,
+    ) {
         $this->assert($this->value);
     }
 

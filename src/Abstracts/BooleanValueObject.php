@@ -9,8 +9,9 @@ abstract readonly class BooleanValueObject implements BooleanValueObjectInterfac
 {
     use DontUseMagicMethods;
 
-    final protected function __construct(private bool $value)
-    {
+    final protected function __construct(
+        private(set) bool $value,
+    ) {
     }
 
     final public function asBoolean(): bool
