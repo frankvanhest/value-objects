@@ -127,7 +127,6 @@ final class IntegerValueObjectTest extends TestCase
         $this->expectExceptionMessage(
             sprintf('Don\t use magic method __unset in class %s', IntegerGreaterThanZero::class)
         );
-        /** @phpstan-ignore-next-line */
         unset($object->nonExistingProperty);
     }
 

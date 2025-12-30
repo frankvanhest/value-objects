@@ -117,7 +117,6 @@ final class BooleanValueObjectTest extends TestCase
         $this->expectExceptionMessage(
             sprintf('Don\t use magic method __unset in class %s', AreWeGreat::class)
         );
-        /** @phpstan-ignore-next-line */
         unset($object->nonExistingProperty);
     }
 

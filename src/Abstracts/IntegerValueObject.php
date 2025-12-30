@@ -10,8 +10,9 @@ abstract readonly class IntegerValueObject implements IntegerValueObjectInterfac
 {
     use DontUseMagicMethods;
 
-    final private function __construct(private int $value)
-    {
+    final private function __construct(
+        private(set) int $value,
+    ) {
         $this->assert($this->value);
     }
 
